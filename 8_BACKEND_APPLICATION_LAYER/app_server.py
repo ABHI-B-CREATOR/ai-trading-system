@@ -881,7 +881,20 @@ class AppServer:
 
 
 # ------------------------------------------------
+# Create module-level app for gunicorn (production WSGI server)
+# gunicorn expects: app_server:app
+_server_instance = None
+
+def get_server():
+    """Get or create the singleton AppServer instance."""
+    global _server_instance
+    if _server_instance is None:
+        _server_instance = AppServer()
+    return _server_instance
+
+# Expose Flask app at module level for gunicorn
+app = get_server().app
 
 if __name__ == "__main__":
-    server = AppServer()
+    server = get_server()
     server.run()
