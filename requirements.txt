@@ -1,15 +1,11 @@
-psutil
-pyyaml
-websocket-client
-kiteconnect
-websockets
-pandas
-numpy
-flask
-flask-cors
-flask-socketio
-python-socketio
-eventlet
-requests
-gunicorn
-PyJWT
+# Core only - minimal dependencies for Railway free tier
+flask==2.3.3
+flask-cors==4.0.0
+flask-socketio==5.3.6
+gunicorn==21.2.0
+eventlet==0.33.3
+requests==2.31.0
+PyJWT==2.8.0
+pyyaml==6.0.1
+websockets==11.0.3
+python-socketio==5.9.0
