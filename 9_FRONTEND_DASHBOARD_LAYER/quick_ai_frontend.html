@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick AI Signal UI</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121c2f;
+      --text: #e7edf7;
+      --muted: #a6b2c8;
+      --accent: #32d583;
+      --border: #223253;
+      --danger: #f97066;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #172746 0%, var(--bg) 55%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      background: linear-gradient(180deg, #142441 0%, var(--panel) 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: 0.3px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    select,
+    input,
+    button {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f1b30;
+      color: var(--text);
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #2388ff 0%, #32d583 100%);
+      border: 0;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .result {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0d1729;
+      white-space: pre-wrap;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.45;
+      min-height: 74px;
+    }
+
+    .error {
+      color: var(--danger);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Quick AI Signal Runner</h1>
+    <p>Backend expected at <code>http://localhost:8000</code></p>
+
+    <div class="grid">
+      <div>
+        <label for="regime">Regime</label>
+        <select id="regime">
+          <option value="bull">bull</option>
+          <option value="bear">bear</option>
+          <option value="sideways" selected>sideways</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="vol">Vol Bucket</label>
+        <select id="vol">
+          <option value="low" selected>low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="trend">Trend Strength</label>
+        <select id="trend">
+          <option value="weak" selected>weak</option>
+          <option value="moderate">moderate</option>
+          <option value="strong">strong</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="liquidity">Liquidity</label>
+        <select id="liquidity">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high" selected>high</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="runBtn">Run AI Signal</button>
+    <div id="result" class="result">No response yet.</div>
+  </main>
+
+  <script>
+    const runBtn = document.getElementById("runBtn");
+    const result = document.getElementById("result");
+
+    const readPayload = () => ({
+      regime: document.getElementById("regime").value,
+      vol_bucket: document.getElementById("vol").value,
+      trend_strength_bucket: document.getElementById("trend").value,
+      liquidity_bucket: document.getElementById("liquidity").value
+    });
+
+    const print = (text, isError = false) => {
+      result.textContent = text;
+      result.classList.toggle("error", isError);
+    };
+
+    const formatOutput = (data) => {
+      return [
+        `Action      : ${data.action}`,
+        `Confidence  : ${data.confidence}`,
+        `State       : ${JSON.stringify(data.state)}`,
+        `Q-Values    : ${JSON.stringify(data.q_values)}`
+      ].join("\n");
+    };
+
+    runBtn.addEventListener("click", async () => {
+      runBtn.disabled = true;
+      print("Running...");
+      try {
+        const response = await fetch("http://localhost:8000/api/ai/signal", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(readPayload())
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed (${response.status})`);
+        }
+
+        const data = await response.json();
+        print(formatOutput(data));
+      } catch (error) {
+        print(error.message || "Unknown error", true);
+      } finally {
+        runBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

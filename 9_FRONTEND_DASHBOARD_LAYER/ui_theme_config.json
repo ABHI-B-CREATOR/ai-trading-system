@@ -1,0 +1,18 @@
+{
+  "background": "#0b1320",
+  "panelBackground": "#0f1a2b",
+  "panelInner": "#08101f",
+
+  "primaryText": "#dcdde1",
+  "secondaryText": "#9fb3c8",
+  "mutedText": "#7f8fa6",
+
+  "bullish": "#2ecc71",
+  "bearish": "#e74c3c",
+  "neutral": "#f1c40f",
+
+  "accent": "#3498db",
+
+  "border": "#1f2a40",
+  "shadow": "rgba(0,0,0,0.4)"
+}

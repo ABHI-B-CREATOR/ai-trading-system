@@ -1,0 +1,60 @@
+:root {
+    color-scheme: dark;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    min-height: 100%;
+    background: #000000;
+    overflow-x: hidden;
+}
+
+html,
+body {
+    height: auto;
+}
+
+#root {
+    min-height: 100dvh;
+}
+
+body {
+    font-family: "Bahnschrift", "Trebuchet MS", "Segoe UI", sans-serif;
+    color: #f4fbff;
+    overflow-y: auto;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+input::placeholder {
+    color: #747aa1;
+}
+
+::selection {
+    background: rgba(204, 124, 255, 0.26);
+    color: #fbfcff;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(7, 7, 18, 0.9);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(145, 114, 255, 0.84) 0%, rgba(93, 216, 255, 0.82) 100%);
+    border-radius: 999px;
+    border: 2px solid rgba(7, 7, 18, 0.94);
+}

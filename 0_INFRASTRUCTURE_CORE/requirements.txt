@@ -1,0 +1,12 @@
+psutil
+pyyaml
+websocket-client
+pandas
+numpy
+kiteconnect
+requests
+flask
+flask-cors
+flask-socketio
+python-socketio
+eventlet

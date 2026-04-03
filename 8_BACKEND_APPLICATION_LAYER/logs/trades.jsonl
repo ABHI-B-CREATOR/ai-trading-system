@@ -1,0 +1,2 @@
+{"order_id": "PAP-584C97E4", "symbol": "NIFTY", "exchange": "NFO", "side": "BUY", "qty": 50, "order_type": "MARKET", "entry_price": 22915.1, "fill_price": 22926.56, "stoploss": null, "target": null, "status": "EXECUTED", "mode": "paper", "timestamp": "2026-04-01T09:30:35.295967"}
+{"order_id": "PAP-107B0452", "symbol": "NIFTY", "exchange": "NFO", "side": "SELL", "qty": 25, "order_type": "MARKET", "entry_price": 22713.1, "fill_price": 22701.74, "stoploss": 22940.23, "target": 22372.4, "status": "EXECUTED", "mode": "paper", "timestamp": "2026-04-03T00:50:28.532547"}

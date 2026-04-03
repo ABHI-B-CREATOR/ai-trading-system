@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+
+  algo_engine:
+    build: .
+    container_name: ai_algo_engine
+    restart: always
+
+    volumes:
+      - .:/app
+
+    environment:
+      - TZ=Asia/Kolkata
+
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G

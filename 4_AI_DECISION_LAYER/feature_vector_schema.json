@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "feature_set_name": "options_intraday_alpha",
+
+  "features": [
+
+    "last_price",
+    "return_1m",
+    "return_5m",
+
+    "ema_fast",
+    "ema_slow",
+    "vwap_distance",
+
+    "rsi_fast",
+    "momentum_slope",
+    "trend_strength_score",
+
+    "atr",
+    "bollinger_bandwidth",
+    "volatility_percentile",
+
+    "volume_spike_score",
+    "liquidity_score",
+    "orderflow_imbalance",
+
+    "atm_iv",
+    "iv_change",
+    "iv_percentile",
+
+    "oi_change_rate",
+    "put_call_ratio",
+
+    "market_regime_encoded",
+    "time_to_expiry_bucket",
+
+    "spread_pct",
+    "tick_frequency_score"
+  ],
+
+  "target_definition": {
+    "name": "target_outcome",
+    "description": "1 = profitable trade, 0 = losing trade",
+    "horizon_minutes": 15
+  },
+
+  "data_constraints": {
+    "max_missing_features_pct": 5,
+    "feature_scaling_required": true,
+    "categorical_encoding": "label"
+  }
+}

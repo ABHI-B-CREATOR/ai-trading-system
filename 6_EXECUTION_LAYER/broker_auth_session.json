@@ -1,0 +1,16 @@
+{
+  "broker": "ZERODHA",
+  "client_id": "CVCDXPYA4A-100",
+  "secret_key": "FM5KBRXC62",
+  "redirect_uri": "http://127.0.0.1:5000",
+  "access_token": "ewdlElA7MrxgHZmVMdHKwU2wpEWKAyCS",
+  "refresh_token": "",
+  "token_generated_time": "2026-04-03T04:40:31.002663+00:00",
+  "token_validity_hours": 24,
+  "paper_trading_mode": true,
+  "demo_mode": false,
+  "rate_limit": {
+    "orders_per_second": 5,
+    "requests_per_minute": 200
+  }
+}

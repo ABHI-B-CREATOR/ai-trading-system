@@ -1,0 +1,75 @@
+broker: zerodha
+zerodha_api_key: o666qh3obb8lvwla
+zerodha_access_token: ewdlElA7MrxgHZmVMdHKwU2wpEWKAyCS
+zerodha_exchanges:
+- NSE
+fyers_app_id: CVCDXPYA4A-100
+fyers_secret: FM5KBRXC62
+fyers_token: demo_token
+symbols:
+- BANKNIFTY
+- NIFTY
+- FINNIFTY
+trading_mode: paper
+risk_mode: normal
+demo_mode: false
+rl_config:
+  learning_rate: 0.001
+  discount_factor: 0.99
+  exploration_rate: 0.1
+  batch_size: 32
+  update_frequency: 5
+retraining:
+  frequency_trades: 100
+  min_samples: 50
+  check_interval_minutes: 60
+strategies:
+  trend:
+    enabled: true
+    lookback_periods: 20
+  breakout:
+    enabled: true
+    atr_multiplier: 2.0
+  scalper:
+    enabled: true
+    quick_exit_minutes: 5
+  range_decay:
+    enabled: true
+    range_period: 20
+  option_writer:
+    enabled: true
+    strike_distance: 100
+  vol_expansion:
+    enabled: true
+    vix_threshold: 20
+risk_limits:
+  max_position_size: 10
+  max_daily_loss: -5000
+  max_exposure_percent: 30
+  max_leverage: 2.0
+websocket:
+  host: 0.0.0.0
+  port: 8765
+  buffer_size: 65536
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: false
+  cors_enabled: true
+sebi_compliance:
+  static_ip_check: true
+  registered_ips:
+  - 122.160.16.5
+  - 103.211.53.123
+  ip_check_interval_seconds: 300
+  block_orders_on_ip_mismatch: true
+telegram:
+  enabled: true
+  bot_token: 8393990734:AAG_AuYXcvKpfnZ41nOeqA_zD5-012Jb_wk
+  chat_id: '8666524285'
+  send_signals: true
+  send_executions: true
+  send_risk_alerts: true
+  send_ip_alerts: true
+  send_daily_summary: true
+  min_confidence: 60

@@ -1,0 +1,69 @@
+# ============================================================
+# AI OPTIONS TRADING SYSTEM - BACKEND CONFIGURATION
+# ============================================================
+
+# Broker Configuration
+fyers_token: "demo_token"
+symbols:
+  - BANKNIFTY
+  - NIFTY
+  - FINNIFTY
+
+# Trading Mode
+trading_mode: "paper"  # "paper" or "live"
+risk_mode: "normal"    # "normal", "conservative", "aggressive"
+
+# Reinforcement Learning Configuration
+rl_config:
+  learning_rate: 0.001
+  discount_factor: 0.99
+  exploration_rate: 0.1
+  batch_size: 32
+  update_frequency: 5
+
+# Model Retraining Configuration
+retraining:
+  frequency_trades: 100
+  min_samples: 50
+  check_interval_minutes: 60
+
+# Strategy Configuration
+strategies:
+  trend:
+    enabled: true
+    lookback_periods: 20
+  breakout:
+    enabled: true
+    atr_multiplier: 2.0
+  scalper:
+    enabled: true
+    quick_exit_minutes: 5
+  range_decay:
+    enabled: true
+    range_period: 20
+  option_writer:
+    enabled: true
+    strike_distance: 100
+  vol_expansion:
+    enabled: true
+    vix_threshold: 20
+
+# Risk Management
+risk_limits:
+  max_position_size: 10
+  max_daily_loss: -5000
+  max_exposure_percent: 30
+  max_leverage: 2.0
+
+# WebSocket Configuration
+websocket:
+  host: "0.0.0.0"
+  port: 8765
+  buffer_size: 65536
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+  cors_enabled: true

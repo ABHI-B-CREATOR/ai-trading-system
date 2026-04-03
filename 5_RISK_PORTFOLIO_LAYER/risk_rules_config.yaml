@@ -1,0 +1,39 @@
+global_risk_limits:
+
+  max_account_risk_pct: 25
+  hard_stop_trading_drawdown_pct: 18
+  soft_reduce_risk_drawdown_pct: 8
+
+position_risk:
+
+  max_risk_per_trade_pct: 1.2
+  max_open_positions: 8
+  max_same_direction_positions: 5
+
+capital_allocation:
+
+  max_strategy_allocation_pct: 30
+  min_strategy_allocation_pct: 5
+
+exposure_limits:
+
+  max_directional_exposure_pct: 65
+  max_symbol_concentration_pct: 40
+  max_premium_selling_exposure_pct: 55
+
+volatility_controls:
+
+  high_volatility_position_reduce_factor: 0.6
+  low_volatility_position_boost_factor: 1.1
+
+execution_safety:
+
+  max_slippage_points: 8
+  max_spread_allowed: 1.2
+  order_retry_limit: 3
+
+system_protection:
+
+  force_flatten_on_black_swan: true
+  trading_pause_on_data_violation: true
+  allow_manual_override: true

@@ -1,0 +1,75 @@
+system:
+  mode: paper        # paper / live
+  timezone: Asia/Kolkata
+
+trading_session:
+  pre_open_start: "09:00"
+  market_start: "09:15"
+  market_stop_new_trades: "15:20"
+  market_close: "15:30"
+  post_close_learning: "15:40"
+
+server:
+  max_cpu_usage_pct: 85
+  max_ram_usage_pct: 85
+  heartbeat_interval_sec: 5
+
+data_feed:
+  tick_timeout_sec: 10
+  reconnect_backoff_sec: 3
+  option_chain_poll_sec: 45
+
+risk_defaults:
+  max_risk_per_trade_pct: 1.0
+  max_daily_loss_pct: 4.0
+  max_open_positions: 5
+
+# Greeks calculation defaults
+greeks:
+  risk_free_rate: 0.07
+  default_iv: 0.20
+  iv_cache_size: 1000
+
+# Regime detection thresholds
+regime:
+  volatility_high_threshold: 0.01
+  volatility_low_threshold: 0.003
+  pcr_bullish_threshold: 1.3
+  pcr_bearish_threshold: 0.7
+  trend_strength_threshold: 0.002
+  trend_consolidation_threshold: 0.001
+
+# Strategy thresholds (configurable per strategy)
+strategy_defaults:
+  # Volatility Expansion Strategy
+  atr_expansion_factor: 1.2
+  bb_expansion_factor: 1.2
+  iv_impulse_threshold: 0.05
+  sl_atr_factor: 1.5
+  tg_atr_factor: 2.0
+  
+  # Range Decay Strategy
+  atr_contract_threshold: 50
+  iv_sell_threshold: 15
+  stability_threshold: 0.6
+  range_sl_factor: 0.5
+  decay_target_factor: 0.3
+  
+  # Option Writing Engine
+  ivp_threshold: 60
+  momentum_neutral_threshold: 0.5
+  liq_threshold: 50
+  premium_sl_pct: 1.02
+  premium_decay_target_pct: 0.97
+
+# Liquidity scoring thresholds
+liquidity:
+  imbalance_excellent_min: 0.7
+  imbalance_excellent_max: 1.3
+  imbalance_good_min: 0.5
+  imbalance_good_max: 1.5
+  spread_excellent_threshold: 0.5
+
+# OI thresholds
+derivatives:
+  heavy_positioning_threshold: 500000

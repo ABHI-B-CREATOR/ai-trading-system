@@ -1,0 +1,20 @@
+services:
+
+  algo_engine:
+    build:
+      context: .
+      dockerfile: 0_INFRASTRUCTURE_CORE/dockerfile
+    container_name: ai_algo_engine
+    restart: always
+
+    volumes:
+      - .:/app
+
+    environment:
+      - TZ=Asia/Kolkata
+
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G

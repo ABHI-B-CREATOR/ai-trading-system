@@ -1,0 +1,40 @@
+{
+  "tick_rules": {
+    "max_price_jump_pct": 5,
+    "min_price": 0.05,
+    "max_spread_pct": 2,
+    "max_tick_delay_sec": 3
+  },
+
+  "candle_rules": {
+    "min_candle_volume": 1,
+    "max_candle_range_pct": 10,
+    "session_start_time": "09:15",
+    "session_end_time": "15:30"
+  },
+
+  "option_rules": {
+    "max_iv": 150,
+    "min_iv": 1,
+    "max_oi_change_pct": 40,
+    "min_strike_distance": 50
+  },
+
+  "depth_rules": {
+    "max_spread_points": 5,
+    "min_top5_liquidity": 100,
+    "imbalance_extreme_threshold": 3
+  },
+
+  "feature_rules": {
+    "max_volatility_feature": 0.05,
+    "max_return_feature": 0.1,
+    "momentum_slope_limit": 5
+  },
+
+  "system_rules": {
+    "max_missing_ticks_sec": 10,
+    "max_data_gap_minutes": 5,
+    "force_strategy_pause_on_violation": true
+  }
+}
